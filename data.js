@@ -17,7 +17,7 @@ window.SITE_DATA = {
   "socials": {
     "instagram": "@MUZLOTO.US",
     "telegram": "@MUZLOTOUS",
-    "whatsapp": ""
+    "whatsapp": "13474162055"
   },
   "texts": {
     "preHead": "Ночь хитов на русском • Charlotte, NC",
