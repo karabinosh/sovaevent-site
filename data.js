@@ -15,8 +15,8 @@ window.SITE_DATA = {
   },
   "ticketUrl": "https://square.link/u/rJpUeuHl",
   "socials": {
-    "instagram": "instagram.com/MUZLOTO.US",
-    "telegram": "t.me/MUZLOTOUS",
+    "instagram": "https://www.instagram.com/MUZLOTO.US",
+    "telegram": "https://t.me/MUZLOTOUS",
     "whatsapp": "13474162055"
   },
   "texts": {

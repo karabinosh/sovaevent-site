@@ -726,6 +726,7 @@ document.getElementById('write-us').addEventListener('click',e=>{
     v=(''+v).trim();
     if(/^https?:\/\//i.test(v)) return v;
     v=v.replace(/^@/,'');
+    if(/^(www\.)?(instagram\.com|instagr\.am|t\.me|telegram\.me|wa\.me|whatsapp\.com|facebook\.com|fb\.com)\//i.test(v)) return 'https://'+v;
     if(kind==='instagram') return 'https://instagram.com/'+v;
     if(kind==='telegram') return 'https://t.me/'+v;
     if(kind==='whatsapp') return 'https://wa.me/'+v.replace(/[^0-9]/g,'');
