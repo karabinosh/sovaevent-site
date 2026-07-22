@@ -480,6 +480,12 @@
             <label>Комментарий</label>
             <textarea name="comment" placeholder="День рождения? Стол ближе к сцене? Пишите!"></textarea>
           </div>
+          <div class="full">
+            <label style="display:flex;align-items:flex-start;gap:10px;text-transform:none;letter-spacing:normal;font-weight:500;color:#c7c3d4;cursor:pointer;font-size:.85rem">
+              <input type="checkbox" name="opt_in" value="да" style="width:18px;height:18px;accent-color:var(--accent);margin-top:2px;flex-shrink:0">
+              <span>Хочу получать сообщения о новых играх SOVA (можно отписаться в любой момент)</span>
+            </label>
+          </div>
         </div>
         <div style="text-align:center;margin-top:30px">
           <button type="submit" class="btn-solid" id="submit-btn" style="width:100%">забронировать стол</button>
@@ -653,6 +659,7 @@ document.getElementById('reg-form').addEventListener('submit',async e=>{
   if(!form.checkValidity()){ form.reportValidity(); return; }
   btn.disabled=true; btn.textContent='отправляем…'; status.className=''; status.style.display='none';
   const data=Object.fromEntries(new FormData(form).entries());
+  data.opt_in=data.opt_in?'ДА, согласен на рассылку':'нет';
   data._subject='Новая бронь: '+data.name+' — '+data.event+' — стол '+data.party_size;
   data._template='table';
   data._captcha='false';
