@@ -73,8 +73,8 @@
     font-family:'Montserrat';font-weight:700;font-size:.9rem;text-transform:lowercase;border-radius:3px;
     border:none;cursor:pointer;transition:background .2s,transform .15s;
   }
-  .btn-solid{box-shadow:0 0 24px rgba(255,26,94,.4)}
-  .btn-solid:hover{background:var(--accent-h);transform:translateY(-2px);box-shadow:0 0 40px rgba(255,26,94,.6)}
+  .btn-solid{background:linear-gradient(120deg,#ff1a5e,#a94bff);box-shadow:0 0 26px rgba(169,75,255,.5)}
+  .btn-solid:hover{background:linear-gradient(120deg,#ff4d82,#22e0ff);transform:translateY(-2px);box-shadow:0 0 46px rgba(34,224,255,.5)}
 
   /* ============ HERO ============ */
   header{
@@ -108,7 +108,7 @@
     text-shadow:0 2px 10px rgba(0,0,0,.95),0 0 30px rgba(0,0,0,.8);
   }
   .pre-head{
-    font-family:'Montserrat';font-weight:600;font-size:.95rem;margin-bottom:22px;color:#fff;
+    font-family:'Montserrat';font-weight:600;font-size:.95rem;margin-bottom:22px;color:var(--neon-cyan);text-shadow:0 0 16px rgba(34,224,255,.4);
   }
   h1{
     font-weight:900;font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.05;text-transform:uppercase;
@@ -135,6 +135,23 @@
   }
   .light .watermark{filter:drop-shadow(0 0 20px rgba(255,26,94,.15));-webkit-text-stroke:1px rgba(20,20,30,.08)}
   .sec-head h2{font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);position:relative}
+  /* многоцветные акценты (яркий неон+) */
+  h1 .l-grad, .grad-text{
+    background:linear-gradient(100deg,#ff1a5e 0%,#a94bff 45%,#22e0ff 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .nav-links a:nth-child(1) i{color:#ff1a5e}
+  .nav-links a:nth-child(2) i{color:#a94bff}
+  .nav-links a:nth-child(3) i{color:#22e0ff}
+  .nav-links a:nth-child(4) i{color:#ffd24b}
+  .ev:nth-child(2) .date{background:linear-gradient(135deg,#a94bff,#22e0ff);box-shadow:0 0 22px rgba(169,75,255,.6)}
+  .srv:nth-child(2) .ic{filter:drop-shadow(0 0 10px rgba(169,75,255,.6))}
+  .vip{background:
+      radial-gradient(50% 60% at 20% 40%,rgba(255,26,94,.35),transparent 60%),
+      radial-gradient(50% 60% at 80% 50%,rgba(34,224,255,.28),transparent 62%),
+      radial-gradient(60% 70% at 55% 90%,rgba(169,75,255,.4),transparent 65%),
+      linear-gradient(180deg,#180a2a,#120a1e) !important}
+  .vip .t b{background:linear-gradient(120deg,#ff4d82,#22e0ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .sec-head .link-right{
     position:absolute;right:0;bottom:8px;color:var(--accent);text-decoration:none;font-weight:700;font-size:.85rem;
   }
@@ -328,7 +345,7 @@
   <img class="hero-logo" src="img/sova-mark.png" alt="SOVA">
   <div class="hero-brand">SOVA</div>
   <div class="pre-head" id="t-pre-head">Ночь хитов на русском &bull; Charlotte, NC</div>
-  <h1><span id="t-hero-title">Музыкальное лото</span><span class="soft" id="t-hero-soft">вечер, который поёт вместе с тобой</span></h1>
+  <h1><span id="t-hero-title" class="grad-text">Музыкальное лото</span><span class="soft" id="t-hero-soft">вечер, который поёт вместе с тобой</span></h1>
   <p class="hero-sub" id="t-hero-sub">Любимые треки &bull; бланки вместо микрофона &bull; призы каждый раунд</p>
   <a href="#booking" class="btn-ghost">забронировать стол</a>
   <div class="hero-note">листай вниз — ближайшие игры</div>
