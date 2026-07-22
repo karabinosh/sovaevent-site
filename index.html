@@ -325,7 +325,7 @@
       <a class="link-right" href="#booking">забронировать</a>
     </div>
     <div class="events">
-      <div class="ev js-pick" data-event="6 августа — Vibe Cafe">
+      <div class="ev js-pick" id="game-card" data-event="6 августа — Vibe Cafe">
         <div class="bg"></div>
         <div class="date"><b>6</b><span>авг</span></div>
         <div class="info">
@@ -399,7 +399,7 @@
 
 <div class="vip">
   <h2>Забронируй свой стол</h2>
-  <p>Вход по билетам — $30 с человека, всё для игры уже включено. <b style="color:#fff">Бронь стола бесплатна при покупке билетов</b>: берёте билеты на компанию — стол ваш.</p>
+  <p>Вход по билетам — $<span class="js-price">30</span> с человека, всё для игры уже включено. <b style="color:#fff">Бронь стола бесплатна при покупке билетов</b>: берёте билеты на компанию — стол ваш.</p>
   <div class="tables-row">
     <div class="t"><b>2</b><span>места</span></div>
     <div class="t"><b>4</b><span>места</span></div>
@@ -460,7 +460,7 @@
         </div>
         <div style="text-align:center;margin-top:30px">
           <button type="submit" class="btn-solid" id="submit-btn" style="width:100%">забронировать стол</button>
-          <a class="js-ticket btn-ghost" style="display:none;margin-top:16px;width:100%;box-sizing:border-box" target="_blank" rel="noopener">🎟 купить билеты — $30/чел</a>
+          <a class="js-ticket btn-ghost" style="display:none;margin-top:16px;width:100%;box-sizing:border-box" target="_blank" rel="noopener">🎟 купить билеты — $<span class="js-price">30</span>/чел</a>
         </div>
         <p class="form-note">Бронь стола бесплатна при покупке билетов. Подтвердим в течение дня; отмена — до 12:00 дня игры.</p>
         <div id="form-status"></div>
@@ -479,7 +479,7 @@
     <details><summary>Нужно ли разбираться в музыке?</summary><p>Нет. Исполнитель и название показываются на экране — остаётся найти песню на своём бланке и зачеркнуть.</p></details>
     <details><summary>Можно прийти одному?</summary><p>Конечно! Каждый играет за себя, а за столом быстро найдутся единомышленники.</p></details>
     <details><summary>Это на русском или на английском?</summary><p>Ведущий — на русском, музыка — вперемешку: русские хиты 90-х–2020-х и мировая классика. Не говорящих по-русски друзей тоже берите — песни поймут все.</p></details>
-    <details><summary>Как оплатить?</summary><p>Билеты — $30 с человека, покупаются онлайн картой по кнопке «Купить билеты» (через Square). Бронь стола по форме бесплатна при покупке билетов — мы просто закрепляем стол за вашей компанией.</p></details>
+    <details><summary>Как оплатить?</summary><p>Билеты — $<span class="js-price">30</span> с человека, покупаются онлайн картой по кнопке «Купить билеты» (через Square). Бронь стола по форме бесплатна при покупке билетов — мы просто закрепляем стол за вашей компанией.</p></details>
     <details><summary>Что за призы?</summary><p>Свой приз за каждый раунд: напитки, сертификаты, мерч. Главный приз вечера — за полный бланк в третьем раунде.</p></details>
   </div>
 </section>
@@ -491,9 +491,9 @@
       <span class="tx">SOVA<span>Event Charlotte</span></span>
     </a>
     <div class="soc">
-      <a href="#">Instagram</a>
-      <a href="#">Telegram</a>
-      <a href="#">WhatsApp</a>
+      <a href="#" class="js-soc-instagram" rel="noopener">Instagram</a>
+      <a href="#" class="js-soc-telegram" rel="noopener">Telegram</a>
+      <a href="#" class="js-soc-whatsapp" rel="noopener">WhatsApp</a>
     </div>
     <p>Музыкальное лото в Шарлотте, Северная Каролина &bull; sovaevent.com</p>
     <p style="margin-top:6px">© 2026 SOVA Event Charlotte</p>
@@ -504,7 +504,32 @@
   <a href="#booking" class="btn-solid">🎟 забронировать стол</a>
 </div>
 
+<script src="data.js"></script>
 <script>
+// ===== применяем данные из data.js =====
+(function(){
+  const D=window.SITE_DATA||{};
+  if(D.event){
+    const ev=document.getElementById('game-card');
+    if(ev){
+      if(D.event.show===false) ev.style.display='none';
+      ev.dataset.event=D.event.formLabel;
+      ev.querySelector('.date b').textContent=D.event.day;
+      ev.querySelector('.date span').textContent=D.event.month;
+      ev.querySelector('.info h3').textContent=D.event.title;
+      ev.querySelector('.info p').textContent=D.event.weekday+', '+D.event.dateText+' • '+D.event.time+' • '+D.event.venue+' • $'+D.event.price+'/чел';
+    }
+    const sel=document.getElementById('event-select');
+    if(sel&&sel.options.length>1) sel.options[1].text=D.event.formLabel;
+    document.querySelectorAll('.js-price').forEach(s=>s.textContent=D.event.price);
+  }
+  if(D.socials){
+    [['instagram',D.socials.instagram],['telegram',D.socials.telegram],['whatsapp',D.socials.whatsapp]].forEach(function(p){
+      document.querySelectorAll('.js-soc-'+p[0]).forEach(function(a){ if(p[1]){a.href=p[1];a.target='_blank';} });
+    });
+  }
+})();
+
 // конфетти в херо
 (function(){
   const box=document.getElementById('confetti');
@@ -519,9 +544,8 @@
   }
 })();
 
-// Ссылка на покупку билетов (Hi.Events / другой сервис).
-// Вставьте URL — и кнопки «купить билет» появятся по всему сайту.
-const TICKET_URL='https://square.link/u/rJpUeuHl';
+// Ссылка на покупку билетов берётся из data.js (правится редактором).
+const TICKET_URL=(window.SITE_DATA&&window.SITE_DATA.ticketUrl)||'';
 if(TICKET_URL){
   document.querySelectorAll('.js-ticket').forEach(a=>{
     a.href=TICKET_URL;
