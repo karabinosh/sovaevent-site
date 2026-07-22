@@ -1,5 +1,6 @@
 // ===== ДАННЫЕ САЙТА — правятся через «Редактор сайта» =====
 window.SITE_DATA = {
+  "variant": "clubio",
   "event": {
     "show": true,
     "day": "6",
@@ -14,8 +15,8 @@ window.SITE_DATA = {
   },
   "ticketUrl": "https://square.link/u/rJpUeuHl",
   "socials": {
-    "instagram": "",
-    "telegram": "",
+    "instagram": "@MUZLOTO.US",
+    "telegram": "@MUZLOTOUS",
     "whatsapp": ""
   },
   "texts": {
