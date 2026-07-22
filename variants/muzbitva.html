@@ -721,8 +721,19 @@ document.getElementById('write-us').addEventListener('click',e=>{
     if(box){box.innerHTML='';D.faq.forEach(function(i){var d=document.createElement('details');
       var s=document.createElement('summary');s.textContent=i.q;var p=document.createElement('p');p.textContent=i.a;
       d.appendChild(s);d.appendChild(p);box.appendChild(d);});}}
+  function socUrl(kind,v){
+    if(!v) return '';
+    v=(''+v).trim();
+    if(/^https?:\/\//i.test(v)) return v;
+    v=v.replace(/^@/,'');
+    if(kind==='instagram') return 'https://instagram.com/'+v;
+    if(kind==='telegram') return 'https://t.me/'+v;
+    if(kind==='whatsapp') return 'https://wa.me/'+v.replace(/[^0-9]/g,'');
+    return v;
+  }
   if(D.socials){[['instagram',D.socials.instagram],['telegram',D.socials.telegram],['whatsapp',D.socials.whatsapp]].forEach(function(pr){
-    document.querySelectorAll('.js-soc-'+pr[0]).forEach(function(a){if(pr[1]){a.href=pr[1];a.target='_blank';}});});}
+    var u=socUrl(pr[0],pr[1]);
+    document.querySelectorAll('.js-soc-'+pr[0]).forEach(function(a){if(u){a.href=u;a.target='_blank';}});});}
 })();
 </script>
 </body>

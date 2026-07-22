@@ -525,9 +525,20 @@
     if(sel&&sel.options.length>1) sel.options[1].text=D.event.formLabel;
     document.querySelectorAll('.js-price').forEach(s=>s.textContent=D.event.price);
   }
+  function socUrl(kind,v){
+    if(!v) return '';
+    v=(''+v).trim();
+    if(/^https?:\/\//i.test(v)) return v;
+    v=v.replace(/^@/,'');
+    if(kind==='instagram') return 'https://instagram.com/'+v;
+    if(kind==='telegram') return 'https://t.me/'+v;
+    if(kind==='whatsapp') return 'https://wa.me/'+v.replace(/[^0-9]/g,'');
+    return v;
+  }
   if(D.socials){
     [['instagram',D.socials.instagram],['telegram',D.socials.telegram],['whatsapp',D.socials.whatsapp]].forEach(function(p){
-      document.querySelectorAll('.js-soc-'+p[0]).forEach(function(a){ if(p[1]){a.href=p[1];a.target='_blank';} });
+      var u=socUrl(p[0],p[1]);
+      document.querySelectorAll('.js-soc-'+p[0]).forEach(function(a){ if(u){a.href=u;a.target='_blank';} });
     });
   }
   if(D.texts){
