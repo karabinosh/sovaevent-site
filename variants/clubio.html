@@ -278,6 +278,25 @@
   footer .soc a:hover{color:var(--accent-h)}
   footer p{color:var(--gray-d);font-size:.85rem}
 
+
+  /* ============ ПЛАВАЮЩИЙ ЧАТ ============ */
+  .chat-fab{position:fixed;right:22px;bottom:22px;z-index:95;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+  .chat-menu{display:flex;flex-direction:column;gap:12px;transform:translateY(10px) scale(.95);opacity:0;pointer-events:none;transition:.22s}
+  .chat-fab.open .chat-menu{transform:none;opacity:1;pointer-events:auto}
+  .chat-item{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;
+    background:#1c1c26;border:1px solid rgba(255,255,255,.12);padding:9px 16px 9px 10px;border-radius:40px;
+    font-weight:700;font-size:.9rem;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .15s}
+  .chat-item:hover{transform:translateX(-3px)}
+  .chat-item svg{width:30px;height:30px;flex-shrink:0}
+  .chat-toggle{width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(135deg,var(--accent),#a94bff);color:#fff;
+    box-shadow:0 10px 30px rgba(240,24,70,.5);display:flex;align-items:center;justify-content:center;
+    transition:transform .2s}
+  .chat-toggle:hover{transform:scale(1.06)}
+  .chat-toggle svg{width:30px;height:30px}
+  .chat-fab.open .chat-toggle{transform:rotate(90deg)}
+  @media(max-width:640px){.chat-fab{bottom:84px}}
+
   .sticky-cta{
     position:fixed;bottom:0;left:0;right:0;z-index:90;display:none;
     padding:12px 16px calc(12px + env(safe-area-inset-bottom));
@@ -542,6 +561,22 @@
   </div>
 </footer>
 
+
+<!-- плавающий чат -->
+<div class="chat-fab" id="chat-fab">
+  <div class="chat-menu">
+    <a class="chat-item js-chat-whatsapp" href="#" target="_blank" rel="noopener" style="display:none">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#25D366"/><path fill="#fff" d="M24 12.7c-6.3 0-11.4 5.1-11.4 11.4 0 2 .5 3.9 1.5 5.6L12.6 35l5.5-1.4a11.4 11.4 0 0 0 5.9 1.6c6.3 0 11.4-5.1 11.4-11.4S30.3 12.7 24 12.7Zm0 20.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.3.9.9-3.2-.2-.4a9.4 9.4 0 0 1-1.4-5c0-5.2 4.2-9.4 9.5-9.4 5.2 0 9.4 4.2 9.4 9.5 0 5.2-4.2 9.4-9.4 9.4Zm5.2-7c-.28-.14-1.7-.83-1.96-.92-.26-.1-.44-.14-.62.14-.18.28-.72.92-.88 1.1-.16.18-.32.2-.6.07-1.65-.83-2.73-1.48-3.82-3.35-.29-.5.29-.46.83-1.54.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.53-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3s.98 2.66 1.12 2.85c.14.18 1.94 2.96 4.7 4.15 1.75.76 2.44.82 3.32.69.53-.08 1.63-.67 1.86-1.31.23-.65.23-1.2.16-1.31-.07-.11-.25-.18-.53-.32Z"/></svg>
+      Написать в WhatsApp</a>
+    <a class="chat-item js-chat-telegram" href="#" target="_blank" rel="noopener" style="display:none">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#2AABEE"/><path fill="#fff" d="M34.1 15.3 29.8 33c-.3 1.2-1 1.5-2 .9l-5.6-4.1-2.7 2.6c-.3.3-.6.6-1.2.6l.4-5.9 10.7-9.7c.5-.4-.1-.6-.7-.3l-13.2 8.3-5.7-1.8c-1.2-.4-1.3-1.2.3-1.8l22.3-8.6c1-.4 1.9.2 1.6 1.7Z"/></svg>
+      Написать в Telegram</a>
+  </div>
+  <button class="chat-toggle" id="chat-toggle" aria-label="Связаться">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm-3 9H7V9h10v2Zm-4 4H7v-2h6v2Z"/></svg>
+  </button>
+</div>
+
 <div class="sticky-cta">
   <a href="#booking" class="btn-solid">🎟 забронировать стол</a>
 </div>
@@ -695,5 +730,22 @@ if('IntersectionObserver' in window && stickyCta){
 </script>
 
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "69c508c56b4b4085890bb4e97e32d72f"}'></script><!-- End Cloudflare Web Analytics -->
+<script>
+// плавающий чат: показать доступные каналы, открытие/закрытие
+(function(){
+  var D=window.SITE_DATA||{}, soc=D.socials||{};
+  function u(kind,v){ if(!v) return ''; v=(''+v).trim(); if(/^https?:\/\//i.test(v)) return v; v=v.replace(/^@/,'');
+    if(/^(www\.)?(t\.me|wa\.me|whatsapp\.com)\//i.test(v)) return 'https://'+v;
+    if(kind==='telegram') return 'https://t.me/'+v; if(kind==='whatsapp') return 'https://wa.me/'+v.replace(/[^0-9]/g,''); return v; }
+  var wa=u('whatsapp',soc.whatsapp), tg=u('telegram',soc.telegram);
+  var any=false;
+  if(wa){var e=document.querySelector('.js-chat-whatsapp');if(e){e.href=wa;e.style.display='flex';any=true;}}
+  if(tg){var e2=document.querySelector('.js-chat-telegram');if(e2){e2.href=tg;e2.style.display='flex';any=true;}}
+  var fab=document.getElementById('chat-fab');
+  if(!any){ if(fab) fab.style.display='none'; return; }
+  document.getElementById('chat-toggle').addEventListener('click',function(){ fab.classList.toggle('open'); });
+  document.addEventListener('click',function(ev){ if(!fab.contains(ev.target)) fab.classList.remove('open'); });
+})();
+</script>
 </body>
 </html>
