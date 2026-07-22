@@ -7,7 +7,7 @@ window.SITE_DATA = {
     "month": "авг",
     "title": "Музыкальное лото",
     "weekday": "Чт",
-    "dateText": "6 августа",
+    "dateText": "6 августа 2026",
     "time": "19:00",
     "venue": "Vibe Cafe",
     "price": "30",
@@ -15,8 +15,8 @@ window.SITE_DATA = {
   },
   "ticketUrl": "https://square.link/u/rJpUeuHl",
   "socials": {
-    "instagram": "@MUZLOTO.US",
-    "telegram": "@MUZLOTOUS",
+    "instagram": "instagram.com/MUZLOTO.US",
+    "telegram": "t.me/MUZLOTOUS",
     "whatsapp": "13474162055"
   },
   "texts": {
@@ -52,5 +52,7 @@ window.SITE_DATA = {
       "q": "Что за призы?",
       "a": "Свой приз за каждый раунд: напитки, сертификаты, мерч. Главный приз вечера — за полный бланк в третьем раунде."
     }
-  ]
+  ],
+  "reviews": [],
+  "gallery": []
 };

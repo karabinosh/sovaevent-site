@@ -249,6 +249,16 @@
   #form-status.ok{display:block;background:rgba(30,180,90,.1);border:1px solid #1eb45a;color:#4be08a}
   #form-status.err{display:block;background:rgba(240,24,70,.08);border:1px solid var(--accent);color:var(--accent-h)}
 
+  /* ============ ГАЛЕРЕЯ И ОТЗЫВЫ ============ */
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+  .gallery-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}
+  .gallery-grid img:hover{transform:scale(1.03)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .rev{background:var(--dark2);border:1px solid rgba(255,255,255,.08);padding:26px;border-radius:4px}
+  .rev .stars{color:var(--accent-h);letter-spacing:.25em;margin-bottom:12px;font-size:.9rem}
+  .rev p{color:#d5d2e0;font-size:.95rem;font-weight:500}
+  .rev .rname{margin-top:14px;font-family:'Montserrat';font-weight:700;font-size:.82rem;color:var(--gray);text-transform:uppercase;letter-spacing:.08em}
+
   /* ============ FAQ ============ */
   details{border-bottom:1px solid rgba(255,255,255,.1)}
   summary{
@@ -301,7 +311,10 @@
       <a href="#private"><i>♪</i> праздники</a>
       <a href="#faq"><i>♪</i> faq</a>
     </div>
-    <a class="nav-cta" href="#booking">бронь стола</a>
+    <div style="display:flex;gap:12px;align-items:center">
+      <a class="js-soc-whatsapp" href="#" style="display:none;font-size:1.25rem;text-decoration:none;line-height:1" title="Написать в WhatsApp">💬</a>
+      <a class="nav-cta" href="#booking">бронь стола</a>
+    </div>
   </div>
 </nav>
 
@@ -365,6 +378,16 @@
         <div class="frame-accent"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="light" id="gallery" style="display:none">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="watermark">Фото</div>
+      <h2>Как это было</h2>
+    </div>
+    <div class="gallery-grid" id="gallery-list"></div>
   </div>
 </section>
 
@@ -469,6 +492,16 @@
   </div>
 </section>
 
+<section id="reviews" style="display:none">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="watermark">Отзывы</div>
+      <h2>Гости говорят</h2>
+    </div>
+    <div class="reviews-grid" id="reviews-list"></div>
+  </div>
+</section>
+
 <section id="faq">
   <div class="wrap" style="max-width:760px">
     <div class="sec-head">
@@ -538,12 +571,28 @@
   if(D.socials){
     [['instagram',D.socials.instagram],['telegram',D.socials.telegram],['whatsapp',D.socials.whatsapp]].forEach(function(p){
       var u=socUrl(p[0],p[1]);
-      document.querySelectorAll('.js-soc-'+p[0]).forEach(function(a){ if(u){a.href=u;a.target='_blank';} });
+      document.querySelectorAll('.js-soc-'+p[0]).forEach(function(a){ if(u){a.href=u;a.target='_blank';a.style.display='';} });
     });
   }
   if(D.texts){
     var T=D.texts, map={'t-pre-head':T.preHead,'t-hero-title':T.heroTitle,'t-hero-soft':T.heroSoft,'t-hero-sub':T.heroSub,'t-about-title':T.aboutTitle,'t-about-text':T.aboutText};
     Object.keys(map).forEach(function(id){ var el=document.getElementById(id); if(el&&map[id]) el.textContent=map[id]; });
+  }
+  if(D.gallery!==undefined){
+    var gsec=document.getElementById('gallery'), gs=document.getElementById('gallery-list');
+    if(gsec) gsec.style.display=(D.gallery&&D.gallery.length)?'':'none';
+    if(gs&&D.gallery&&D.gallery.length){gs.innerHTML='';D.gallery.forEach(function(src){
+      var im=document.createElement('img');im.src=src;im.loading='lazy';im.alt='SOVA МузЛото — фото с игры';gs.appendChild(im);});}
+  }
+  if(D.reviews!==undefined){
+    var rsec=document.getElementById('reviews'), rs=document.getElementById('reviews-list');
+    if(rsec) rsec.style.display=(D.reviews&&D.reviews.length)?'':'none';
+    if(rs&&D.reviews&&D.reviews.length){rs.innerHTML='';D.reviews.forEach(function(r){
+      var c=document.createElement('div');c.className='rev';
+      var st=document.createElement('div');st.className='stars';st.textContent='★★★★★';
+      var p2=document.createElement('p');p2.textContent=r.text;
+      var nm=document.createElement('div');nm.className='rname';nm.textContent=r.name;
+      c.appendChild(st);c.appendChild(p2);c.appendChild(nm);rs.appendChild(c);});}
   }
   if(D.faq&&D.faq.length){
     var box=document.getElementById('faq-list');
