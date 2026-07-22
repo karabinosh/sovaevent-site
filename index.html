@@ -11,10 +11,10 @@
 <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 <style>
   :root{
-    --dark:#120a1e;
-    --dark2:#1b1030;
-    --accent:#ff1a5e;
-    --accent-h:#ff4d82;
+    --dark:#0e0e13;
+    --dark2:#15151c;
+    --accent:#f01846;
+    --accent-h:#ff2f5c;
     --violet1:#5b1670;
     --violet2:#2a0a55;
     --text:#ffffff;
@@ -22,8 +22,6 @@
     --gray:#9a98a5;
     --gray-d:#6d6b78;
     --white:#ffffff;
-    --neon-cyan:#22e0ff;
-    --neon-violet:#a94bff;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -73,17 +71,15 @@
     font-family:'Montserrat';font-weight:700;font-size:.9rem;text-transform:lowercase;border-radius:3px;
     border:none;cursor:pointer;transition:background .2s,transform .15s;
   }
-  .btn-solid{background:linear-gradient(120deg,#ff1a5e,#a94bff);box-shadow:0 0 26px rgba(169,75,255,.5)}
-  .btn-solid:hover{background:linear-gradient(120deg,#ff4d82,#22e0ff);transform:translateY(-2px);box-shadow:0 0 46px rgba(34,224,255,.5)}
+  .btn-solid:hover{background:var(--accent-h);transform:translateY(-2px)}
 
   /* ============ HERO ============ */
   header{
     min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
     text-align:center;position:relative;padding:120px 20px 80px;
     background:
-      radial-gradient(60% 55% at 20% 28%,rgba(255,26,94,.5),transparent 60%),
-      radial-gradient(55% 60% at 82% 22%,rgba(169,75,255,.55),transparent 65%),
-      radial-gradient(45% 40% at 60% 80%,rgba(34,224,255,.28),transparent 60%),
+      radial-gradient(60% 55% at 22% 30%,rgba(240,24,70,.30),transparent 60%),
+      radial-gradient(55% 60% at 80% 25%,rgba(122,31,160,.45),transparent 65%),
       linear-gradient(180deg,rgba(20,8,40,.55) 0%,rgba(14,7,25,.72) 55%,var(--dark) 100%),
       url('img/hero.jpg') center/cover no-repeat;
   }
@@ -108,13 +104,13 @@
     text-shadow:0 2px 10px rgba(0,0,0,.95),0 0 30px rgba(0,0,0,.8);
   }
   .pre-head{
-    font-family:'Montserrat';font-weight:600;font-size:.95rem;margin-bottom:22px;color:var(--neon-cyan);text-shadow:0 0 16px rgba(34,224,255,.4);
+    font-family:'Montserrat';font-weight:600;font-size:.95rem;margin-bottom:22px;color:#fff;
   }
   h1{
     font-weight:900;font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.05;text-transform:uppercase;
     text-shadow:0 6px 40px rgba(0,0,0,.45);
   }
-  h1 .soft{display:block;text-transform:none;font-weight:700;font-size:.62em;margin-top:6px;color:var(--neon-cyan);text-shadow:0 0 24px rgba(34,224,255,.5)}
+  h1 .soft{display:block;text-transform:none;font-weight:700;font-size:.62em;margin-top:6px}
   .hero-sub{margin:26px 0 40px;color:#e8e2f2;font-size:1.05rem;font-weight:600}
   .hero-note{
     position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
@@ -128,30 +124,13 @@
   /* ============ СЕКЦИИ ============ */
   section{padding:100px 0;position:relative}
   .sec-head{text-align:center;margin-bottom:56px;position:relative}
-  .watermark{filter:drop-shadow(0 0 20px rgba(255,26,94,.15));
+  .watermark{
     position:absolute;left:50%;top:50%;transform:translate(-50%,-58%);
     font-family:'Montserrat';font-weight:900;font-size:clamp(4rem,13vw,9rem);line-height:1;
     color:transparent;-webkit-text-stroke:1px rgba(128,128,140,.16);pointer-events:none;white-space:nowrap;
   }
-  .light .watermark{filter:drop-shadow(0 0 20px rgba(255,26,94,.15));-webkit-text-stroke:1px rgba(20,20,30,.08)}
+  .light .watermark{-webkit-text-stroke:1px rgba(20,20,30,.08)}
   .sec-head h2{font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);position:relative}
-  /* многоцветные акценты (яркий неон+) */
-  h1 .l-grad, .grad-text{
-    background:linear-gradient(100deg,#ff1a5e 0%,#a94bff 45%,#22e0ff 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .nav-links a:nth-child(1) i{color:#ff1a5e}
-  .nav-links a:nth-child(2) i{color:#a94bff}
-  .nav-links a:nth-child(3) i{color:#22e0ff}
-  .nav-links a:nth-child(4) i{color:#ffd24b}
-  .ev:nth-child(2) .date{background:linear-gradient(135deg,#a94bff,#22e0ff);box-shadow:0 0 22px rgba(169,75,255,.6)}
-  .srv:nth-child(2) .ic{filter:drop-shadow(0 0 10px rgba(169,75,255,.6))}
-  .vip{background:
-      radial-gradient(50% 60% at 20% 40%,rgba(255,26,94,.35),transparent 60%),
-      radial-gradient(50% 60% at 80% 50%,rgba(34,224,255,.28),transparent 62%),
-      radial-gradient(60% 70% at 55% 90%,rgba(169,75,255,.4),transparent 65%),
-      linear-gradient(180deg,#180a2a,#120a1e) !important}
-  .vip .t b{background:linear-gradient(120deg,#ff4d82,#22e0ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .sec-head .link-right{
     position:absolute;right:0;bottom:8px;color:var(--accent);text-decoration:none;font-weight:700;font-size:.85rem;
   }
@@ -173,7 +152,7 @@
   .ev:nth-child(1) .bg{background:linear-gradient(180deg,rgba(74,15,122,.25),rgba(20,8,40,.35)),url('img/ev-classics.jpg') center/cover no-repeat}
   .ev:nth-child(2) .bg{background:linear-gradient(180deg,rgba(122,21,80,.2),rgba(20,8,40,.35)),url('img/ev-private.jpg') center/cover no-repeat}
   .ev .date{
-    position:absolute;top:0;right:0;background:var(--accent);color:#fff;text-align:center;box-shadow:0 0 22px rgba(255,26,94,.6);
+    position:absolute;top:0;right:0;background:var(--accent);color:#fff;text-align:center;
     padding:10px 14px;font-family:'Montserrat';line-height:1.1;z-index:2;
   }
   .ev .date b{display:block;font-size:1.4rem;font-weight:800}
@@ -294,7 +273,8 @@
   /* ============ FOOTER ============ */
   footer{background:#0a0a0f;border-top:1px solid rgba(255,255,255,.06);padding:60px 0 110px;text-align:center}
   footer .soc{display:flex;gap:26px;justify-content:center;margin:22px 0}
-  footer .soc a{color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;transition:color .2s}
+  footer .soc a{color:#fff;text-decoration:none;transition:color .2s,transform .2s;display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+  footer .soc a:hover{transform:translateY(-3px)}
   footer .soc a:hover{color:var(--accent-h)}
   footer p{color:var(--gray-d);font-size:.85rem}
 
@@ -345,7 +325,7 @@
   <img class="hero-logo" src="img/sova-mark.png" alt="SOVA">
   <div class="hero-brand">SOVA</div>
   <div class="pre-head" id="t-pre-head">Ночь хитов на русском &bull; Charlotte, NC</div>
-  <h1><span id="t-hero-title" class="grad-text">Музыкальное лото</span><span class="soft" id="t-hero-soft">вечер, который поёт вместе с тобой</span></h1>
+  <h1><span id="t-hero-title">Музыкальное лото</span><span class="soft" id="t-hero-soft">вечер, который поёт вместе с тобой</span></h1>
   <p class="hero-sub" id="t-hero-sub">Любимые треки &bull; бланки вместо микрофона &bull; призы каждый раунд</p>
   <a href="#booking" class="btn-ghost">забронировать стол</a>
   <div class="hero-note">листай вниз — ближайшие игры</div>
@@ -553,9 +533,9 @@
       <span class="tx">SOVA<span>Event Charlotte</span></span>
     </a>
     <div class="soc">
-      <a href="#" class="js-soc-instagram" rel="noopener">Instagram</a>
-      <a href="#" class="js-soc-telegram" rel="noopener">Telegram</a>
-      <a href="#" class="js-soc-whatsapp" rel="noopener">WhatsApp</a>
+      <a href="#" class="js-soc-instagram" rel="noopener"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.14 0-3.5 0-4.74.07-.9.04-1.38.2-1.7.32-.43.17-.74.37-1.06.7-.32.31-.52.62-.7 1.05-.12.32-.28.8-.32 1.7C3.4 8.5 3.4 8.86 3.4 12s0 3.5.07 4.74c.04.9.2 1.38.32 1.7.17.43.37.74.7 1.06.31.32.62.52 1.05.7.32.12.8.28 1.7.32 1.24.06 1.6.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.2 1.7-.32.43-.17.74-.37 1.06-.7.32-.31.52-.62.7-1.05.12-.32.28-.8.32-1.7.06-1.24.07-1.6.07-4.74s0-3.5-.07-4.74c-.04-.9-.2-1.38-.32-1.7a2.8 2.8 0 0 0-.7-1.06 2.8 2.8 0 0 0-1.05-.7c-.32-.12-.8-.28-1.7-.32C15.5 4 15.14 4 12 4Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.15-3.3a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg></a>
+      <a href="#" class="js-soc-telegram" rel="noopener"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M21.94 4.9 18.9 19.2c-.23 1.02-.83 1.27-1.68.79l-4.64-3.42-2.24 2.16c-.25.25-.46.46-.94.46l.33-4.73 8.6-7.77c.37-.33-.08-.52-.58-.19L6.83 13.4l-4.57-1.43c-1-.31-1.02-1 .2-1.48l17.87-6.9c.83-.3 1.56.2 1.6 1.3Z"/></svg></a>
+      <a href="#" class="js-soc-whatsapp" rel="noopener"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.9c0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.45 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.8c2.17 0 4.2.84 5.74 2.38a8.05 8.05 0 0 1 2.38 5.73c0 4.48-3.65 8.12-8.13 8.12h-.01a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.06.8.82-2.99-.2-.31a8.05 8.05 0 0 1-1.24-4.32c0-4.48 3.65-8.12 8.14-8.12Zm-2.7 4.36c-.14 0-.37.05-.56.26-.19.21-.73.72-.73 1.75s.75 2.03.85 2.17c.11.14 1.47 2.36 3.63 3.22 1.8.72 2.17.58 2.56.54.39-.03 1.26-.51 1.44-1.01.18-.5.18-.93.13-1.02-.05-.09-.19-.14-.4-.25-.21-.11-1.26-.62-1.46-.69-.19-.07-.34-.11-.48.11-.14.21-.55.68-.67.82-.12.14-.25.16-.46.05-.21-.11-.9-.33-1.71-1.06-.63-.56-1.06-1.26-1.18-1.47-.12-.21-.01-.33.09-.44.1-.1.21-.25.32-.38.11-.13.14-.22.21-.37.07-.14.04-.27-.02-.38-.05-.11-.48-1.15-.66-1.57-.17-.41-.35-.35-.48-.36l-.4-.01Z"/></svg></a>
     </div>
     <p>Музыкальное лото в Шарлотте, Северная Каролина &bull; sovaevent.com</p>
     <p style="margin-top:6px">© 2026 SOVA Event Charlotte</p>
