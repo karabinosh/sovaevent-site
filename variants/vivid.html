@@ -301,13 +301,13 @@
 
 
   /* ============ ПЛАВАЮЩИЙ ЧАТ ============ */
-  .chat-fab{position:fixed;right:22px;bottom:22px;z-index:95;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+  .chat-fab{position:fixed;left:22px;bottom:22px;z-index:95;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
   .chat-menu{display:flex;flex-direction:column;gap:12px;transform:translateY(10px) scale(.95);opacity:0;pointer-events:none;transition:.22s}
   .chat-fab.open .chat-menu{transform:none;opacity:1;pointer-events:auto}
   .chat-item{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;
     background:#1c1c26;border:1px solid rgba(255,255,255,.12);padding:9px 16px 9px 10px;border-radius:40px;
     font-weight:700;font-size:.9rem;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .15s}
-  .chat-item:hover{transform:translateX(-3px)}
+  .chat-item:hover{transform:translateX(3px)}
   .chat-item svg{width:30px;height:30px;flex-shrink:0}
   .chat-toggle{width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;
     background:linear-gradient(135deg,var(--accent),#a94bff);color:#fff;
@@ -768,5 +768,16 @@ if('IntersectionObserver' in window && stickyCta){
   document.addEventListener('click',function(ev){ if(!fab.contains(ev.target)) fab.classList.remove('open'); });
 })();
 </script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/6442c7b231ebfa0fe7f9adc8/1guido4a2';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 </html>
