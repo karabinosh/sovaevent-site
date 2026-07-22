@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 <style>
   :root{
     --dark:#0e0e13;
@@ -91,6 +92,10 @@
   @keyframes fall{
     0%{transform:translateY(-5vh) rotate(0deg)}
     100%{transform:translateY(105vh) rotate(720deg)}
+  }
+  .hero-logo{
+    width:min(150px,32vw);margin-bottom:20px;
+    filter:drop-shadow(0 8px 30px rgba(0,0,0,.6));
   }
   .pre-head{
     font-family:'Montserrat';font-weight:600;font-size:.95rem;margin-bottom:22px;color:#fff;
@@ -282,7 +287,7 @@
 <nav>
   <div class="nav-inner">
     <a class="logo" href="#">
-      <span class="ic">🦉</span>
+      <span class="ic"><svg viewBox="0 0 120 120" width="28" height="28" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" aria-label="Sova"><path d="M 37,15 A 45,45 0 1 1 83,15 L 60,52 Z"/></svg></span>
       <span class="tx">SOVA<span>МузЛото &bull; CLT</span></span>
     </a>
     <div class="nav-links">
@@ -298,6 +303,7 @@
 <header>
   <div class="confetti" id="confetti"></div>
   <div class="age-badge">21+</div>
+  <img class="hero-logo" src="img/sova-logo.png" alt="SOVA">
   <div class="pre-head">Ночь хитов на русском &bull; Charlotte, NC</div>
   <h1>Музыкальное лото<span class="soft">вечер, который поёт вместе с тобой</span></h1>
   <p class="hero-sub">Любимые треки &bull; бланки вместо микрофона &bull; призы каждый раунд</p>
@@ -484,7 +490,7 @@
 <footer>
   <div class="wrap">
     <a class="logo" href="#" style="justify-content:center">
-      <span class="ic">🦉</span>
+      <span class="ic"><svg viewBox="0 0 120 120" width="30" height="30" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" aria-label="Sova"><path d="M 37,15 A 45,45 0 1 1 83,15 L 60,52 Z"/></svg></span>
       <span class="tx">SOVA<span>Event Charlotte</span></span>
     </a>
     <div class="soc">
