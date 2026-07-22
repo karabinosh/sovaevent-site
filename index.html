@@ -310,9 +310,9 @@
   <div class="age-badge">21+</div>
   <img class="hero-logo" src="img/sova-mark.png" alt="SOVA">
   <div class="hero-brand">SOVA</div>
-  <div class="pre-head">Ночь хитов на русском &bull; Charlotte, NC</div>
-  <h1>Музыкальное лото<span class="soft">вечер, который поёт вместе с тобой</span></h1>
-  <p class="hero-sub">Любимые треки &bull; бланки вместо микрофона &bull; призы каждый раунд</p>
+  <div class="pre-head" id="t-pre-head">Ночь хитов на русском &bull; Charlotte, NC</div>
+  <h1><span id="t-hero-title">Музыкальное лото</span><span class="soft" id="t-hero-soft">вечер, который поёт вместе с тобой</span></h1>
+  <p class="hero-sub" id="t-hero-sub">Любимые треки &bull; бланки вместо микрофона &bull; призы каждый раунд</p>
   <a href="#booking" class="btn-ghost">забронировать стол</a>
   <div class="hero-note">листай вниз — ближайшие игры</div>
 </header>
@@ -353,8 +353,8 @@
     <div class="about-grid">
       <div class="about-txt">
         <div class="sub-red">Как проходит</div>
-        <h2>Старое доброе лото. Новые правила ночи</h2>
-        <p>Это бинго, где вместо чисел — <b>песни, которые знает весь зал</b>. Ничего угадывать не надо: исполнитель и название выводятся на экран. Твоя задача — найти трек на бланке, зачеркнуть и подпевать.</p>
+        <h2 id="t-about-title">Старое доброе лото. Новые правила ночи</h2>
+        <p id="t-about-text">Это бинго, где вместо чисел — <b>песни, которые знает весь зал</b>. Ничего угадывать не надо: исполнитель и название выводятся на экран. Твоя задача — найти трек на бланке, зачеркнуть и подпевать.</p>
         <div class="steps">
           <div class="step"><div class="n">1</div><p>Получаешь уникальный бланк — у каждого гостя свой набор песен</p></div>
           <div class="step"><div class="n">2</div><p>Звучит трек, на экране исполнитель и название — ищешь у себя</p></div>
@@ -475,12 +475,14 @@
       <div class="watermark">FAQ</div>
       <h2>Вопросы</h2>
     </div>
+    <div id="faq-list">
     <details><summary>Чем музыкальное лото отличается от квиза?</summary><p>Не нужна команда — у каждого свой бланк. Не нужно ничего отгадывать — всё на экране. Формат душевный: зал поёт хором, а не спорит над вопросами.</p></details>
     <details><summary>Нужно ли разбираться в музыке?</summary><p>Нет. Исполнитель и название показываются на экране — остаётся найти песню на своём бланке и зачеркнуть.</p></details>
     <details><summary>Можно прийти одному?</summary><p>Конечно! Каждый играет за себя, а за столом быстро найдутся единомышленники.</p></details>
     <details><summary>Это на русском или на английском?</summary><p>Ведущий — на русском, музыка — вперемешку: русские хиты 90-х–2020-х и мировая классика. Не говорящих по-русски друзей тоже берите — песни поймут все.</p></details>
     <details><summary>Как оплатить?</summary><p>Билеты — $<span class="js-price">30</span> с человека, покупаются онлайн картой по кнопке «Купить билеты» (через Square). Бронь стола по форме бесплатна при покупке билетов — мы просто закрепляем стол за вашей компанией.</p></details>
     <details><summary>Что за призы?</summary><p>Свой приз за каждый раунд: напитки, сертификаты, мерч. Главный приз вечера — за полный бланк в третьем раунде.</p></details>
+    </div>
   </div>
 </section>
 
@@ -527,6 +529,22 @@
     [['instagram',D.socials.instagram],['telegram',D.socials.telegram],['whatsapp',D.socials.whatsapp]].forEach(function(p){
       document.querySelectorAll('.js-soc-'+p[0]).forEach(function(a){ if(p[1]){a.href=p[1];a.target='_blank';} });
     });
+  }
+  if(D.texts){
+    var T=D.texts, map={'t-pre-head':T.preHead,'t-hero-title':T.heroTitle,'t-hero-soft':T.heroSoft,'t-hero-sub':T.heroSub,'t-about-title':T.aboutTitle,'t-about-text':T.aboutText};
+    Object.keys(map).forEach(function(id){ var el=document.getElementById(id); if(el&&map[id]) el.textContent=map[id]; });
+  }
+  if(D.faq&&D.faq.length){
+    var box=document.getElementById('faq-list');
+    if(box){
+      box.innerHTML='';
+      D.faq.forEach(function(item){
+        var d=document.createElement('details');
+        var s=document.createElement('summary'); s.textContent=item.q;
+        var p=document.createElement('p'); p.textContent=item.a;
+        d.appendChild(s); d.appendChild(p); box.appendChild(d);
+      });
+    }
   }
 })();
 
